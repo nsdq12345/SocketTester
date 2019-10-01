@@ -1,0 +1,41 @@
+{
+  "name": "SocketTester",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel client --out-dir public --presets=env,react --source-maps inline --watch",
+    "server": "npx nodemon server/server.js",
+    "react-dev": "webpack -d --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nsdq12345/SocketTester.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nsdq12345/SocketTester/issues"
+  },
+  "homepage": "https://github.com/nsdq12345/SocketTester#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.3",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
+  }
+}
