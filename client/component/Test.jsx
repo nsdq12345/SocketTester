@@ -1,6 +1,7 @@
 import React from 'react';
 const io  = require('socket.io-client');
 const socket = io('http://localhost:3001');
+const Axios = require('axios');
 
 export default class Test extends React.Component {
 
@@ -31,14 +32,21 @@ export default class Test extends React.Component {
 
     socket.on('colorChange', data => {
       console.log("received:", data);
-
-      var matrixClone = this.state.matrix.slice();
-      matrixClone[data[0]][data[1]] = data[2];
       this.setState({
         changeCount: this.changeCount+1,
-        matrix: matrixClone
+        matrix: data
       })
     })
+  }
+
+  componentDidMount() {
+    Axios.get('http://localhost:3001/getBoard')
+      .then(data => {
+        this.setState({
+          changeCount: this.changeCount+1,
+          matrix: data.data
+        })
+      });
   }
 
   setColor(e) {
