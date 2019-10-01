@@ -1,6 +1,7 @@
 import React from 'react';
 const io  = require('socket.io-client');
-const socket = io('http://localhost:3001');
+const address = 'http://localhost:3001';
+const socket = io(address);
 const Axios = require('axios');
 
 export default class Test extends React.Component {
@@ -40,7 +41,7 @@ export default class Test extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get('http://localhost:3001/getBoard')
+    Axios.get(address)
       .then(data => {
         this.setState({
           changeCount: this.changeCount+1,
@@ -68,6 +69,7 @@ export default class Test extends React.Component {
         <button onClick={() => {this.setColor("green")}}>Green</button>
         <button onClick={() => {this.setColor("blue")}}>Blue</button>
         <button onClick={() => {this.setColor("purple")}}>Purple</button>
+        <button onClick={() => {this.setColor("white")}}>White</button>
         <div>
           <table style={{"borderCollapse":"collapse"}}>
             <tbody style={{"borderCollapse":"collapse"}}>
