@@ -6,9 +6,9 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
 var matrix = [];
-for (var r = 0; r < 25; r++) {
+for (var r = 0; r < 100; r++) {
   matrix[r] = [];
-  for (var c = 0; c < 25; c++) {
+  for (var c = 0; c < 100; c++) {
     matrix[r][c] = 'white';
   }
 }

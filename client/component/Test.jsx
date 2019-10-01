@@ -13,7 +13,7 @@ export default class Test extends React.Component {
       console.log('connected');
     });
 
-    this.side = 25;
+    this.side = 100;
 
     var matrix = [];
     for (var r = 0; r < this.side ; r++) {
@@ -41,7 +41,7 @@ export default class Test extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get(address)
+    Axios.get(address + '/getBoard')
       .then(data => {
         this.setState({
           changeCount: this.changeCount+1,
@@ -75,7 +75,7 @@ export default class Test extends React.Component {
             <tbody style={{"borderCollapse":"collapse"}}>
               {this.state.matrix.map((row, r) => {
                 return (<tr>{row.map((cell, c) => {
-                  return (<td onClick={() => this.sendColor([r, c, this.state.currentColor])} style={{backgroundColor:cell, border: '1px solid black', "borderCollapse":"collapse", width:"20px", height:"20px"}}></td>)
+                  return (<td onClick={() => this.sendColor([r, c, this.state.currentColor])} style={{backgroundColor:cell, border: '1px solid black', "borderCollapse":"collapse", width:"10px", height:"10px"}}></td>)
                 })}</tr>);
               })}
             </tbody>
