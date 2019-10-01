@@ -61,11 +61,11 @@ export default class Test extends React.Component {
         <button onClick={() => {this.setColor("blue")}}>Blue</button>
         <button onClick={() => {this.setColor("purple")}}>Purple</button>
         <div>
-          <table>
-            <tbody>
+          <table style={{"borderCollapse":"collapse"}}>
+            <tbody style={{"borderCollapse":"collapse"}}>
               {this.state.matrix.map((row, r) => {
                 return (<tr>{row.map((cell, c) => {
-                  return (<td onClick={() => this.sendColor([r, c, this.state.currentColor])} style={{backgroundColor:cell, border: '1px solid black', width:"20px", height:"20px"}}></td>)
+                  return (<td onClick={() => this.sendColor([r, c, this.state.currentColor])} style={{backgroundColor:cell, border: '1px solid black', "borderCollapse":"collapse", width:"20px", height:"20px"}}></td>)
                 })}</tr>);
               })}
             </tbody>
