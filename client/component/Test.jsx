@@ -21,13 +21,12 @@ export default class Test extends React.Component {
       }
     }
 
-    console.log(matrix)
-
     this.state = {
       text: [],
       input: '',
       matrix: matrix,
       changeCount: 0,
+      currentColor: 'white',
     }
 
     socket.on('colorChange', data => {
@@ -42,27 +41,31 @@ export default class Test extends React.Component {
     })
   }
 
-  changeColor(e) {
-    var c = Math.floor(Math.random() * this.side);
-    var r = Math.floor(Math.random() * this.side);
-    socket.emit('colorChange', [c,r,e])
+  setColor(e) {
+    this.setState({
+      currentColor: e
+    })
+  }
+
+  sendColor(stuff) {
+    socket.emit('colorChange', stuff)
   }
 
   render() {
     return (
       <div>
-        <button onClick={() => {this.changeColor("red")}}>Red</button>
-        <button onClick={() => {this.changeColor("orange")}}>Orange</button>
-        <button onClick={() => {this.changeColor("yellow")}}>Yellow</button>
-        <button onClick={() => {this.changeColor("green")}}>Green</button>
-        <button onClick={() => {this.changeColor("blue")}}>Blue</button>
-        <button onClick={() => {this.changeColor("purple")}}>Purple</button>
+        <button onClick={() => {this.setColor("red")}}>Red</button>
+        <button onClick={() => {this.setColor("orange")}}>Orange</button>
+        <button onClick={() => {this.setColor("yellow")}}>Yellow</button>
+        <button onClick={() => {this.setColor("green")}}>Green</button>
+        <button onClick={() => {this.setColor("blue")}}>Blue</button>
+        <button onClick={() => {this.setColor("purple")}}>Purple</button>
         <div>
           <table>
             <tbody>
-              {this.state.matrix.map(row => {
-                return (<tr>{row.map(cell => {
-                  return (<td style={{backgroundColor:cell, border: '1px solid black', width:"20px", height:"20px"}}></td>)
+              {this.state.matrix.map((row, r) => {
+                return (<tr>{row.map((cell, c) => {
+                  return (<td onClick={() => this.sendColor([r, c, this.state.currentColor])} style={{backgroundColor:cell, border: '1px solid black', width:"20px", height:"20px"}}></td>)
                 })}</tr>);
               })}
             </tbody>
