@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/nsdq12345/SocketTester#readme",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "express": "^4.17.1",
